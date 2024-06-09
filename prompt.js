@@ -1,3 +1,5 @@
-const prompt = (query) => {
-  return
+const runPrompt = (query) => {
+  console.log(query);
 }
+
+runPrompt('How to initialize expo project')
