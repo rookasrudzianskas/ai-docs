@@ -16,4 +16,4 @@ const runPrompt = async (query) => {
   console.log(data);
 }
 
-runPrompt('How to initialize expo project')
+runPrompt('How to deploy the project?')
