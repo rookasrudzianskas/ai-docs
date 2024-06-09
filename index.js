@@ -20,8 +20,7 @@ const handleDoc = async (slug) => {
     input: data.body,
     encoding_format: 'float',
   });
-
-  console.log(embedding.data[0]);
+  const vector = embedding.data[0].embedding
 
 }
 
