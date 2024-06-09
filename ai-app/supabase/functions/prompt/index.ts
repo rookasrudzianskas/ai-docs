@@ -4,7 +4,6 @@
 // This enables autocomplete, go to definition, etc.
 
 // Setup type definitions for built-in Supabase Runtime APIs
-/// <reference types="https://esm.sh/@supabase/functions-js/src/edge-runtime.d.ts" />
 
 import OpenAI from "https://deno.land/x/openai@v4.47.1/mod.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
