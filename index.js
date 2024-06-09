@@ -15,12 +15,13 @@ const handleDoc = async (slug) => {
   const data = await parseExpoDocs(slug);
   // generate a vector
 
-  const completion = await openai.chat.completions.create({
-    messages: [{ role: "system", content: "You are a helpful assistant." }],
-    model: "gpt-3.5-turbo",
+  const embedding = await openai.embeddings.create({
+    model: "text-embedding-3-small",
+    input: data.body,
+    encoding_format: 'float',
   });
 
-  console.log(completion.choices[0]);
+  console.log(embedding.data[0]);
 
 }
 
