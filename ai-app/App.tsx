@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import {
@@ -13,10 +14,27 @@ import {
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Markdown from 'react-native-markdown-display';
+import supabase from './src/lib/supabase';
+// import supabase from "../supabase";
 
 export default function App() {
   const [query, setQuery] = useState('');
   const [messages, setMessages] = useState([]);
+
+  const runPrompt = async () => {
+    setMessages((current) => [{ message: query, isUser: true }, ...current]);
+    setQuery('');
+    const { data, error } = await supabase.functions.invoke('prompt', {
+      body: { query },
+    });
+    if (error) {
+      console.log('Failed');
+      console.log(error);
+    }
+    setMessages((current) => [{ ...data }, ...current]);
+  };
+
+  console.log(messages);
 
   return (
     <View style={styles.container}>
