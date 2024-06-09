@@ -3,14 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import {SLUGS} from "./slugs.js";
 import {generateEmbedding} from "./embeddings.js";
 import supabase from "./supabase.js";
-
-const parseExpoDocs = async (slug) => {
-  const url = `https://raw.githubusercontent.com/expo/expo/main/docs/pages/${slug}.mdx`;
-  const response = await fetch(url);
-  const content = await response.text();
-  const data = fm(content)
-  return data;
-}
+import {parseExpoDocs} from "./docs-parser.js";
 
 const handleDoc = async (slug) => {
   const data = await parseExpoDocs(slug);
